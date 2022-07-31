@@ -6,7 +6,12 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Cool@localhost/flask-react-todoapp'
+env = 'prod'
+
+if (env == 'prod'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://qhtatjdiubecwb:73305923f31658f0c6c4a2086ef334bb505a2ad00cd489037442c1999b5bf8c7@ec2-44-206-197-71.compute-1.amazonaws.com:5432/d6ld7eujiu72t0'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Cool@localhost/flask-react-todoapp'
 
 db = SQLAlchemy(app)
 CORS(app)
